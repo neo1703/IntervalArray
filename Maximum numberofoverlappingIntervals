@@ -12,3 +12,19 @@ for i = 1 to n-1
     end
 end loop;
 return result;
+
+
+
+def insert(intervals, newInterval) :
+result = empty set of intervals.
+foreach interval curInterval in intervals
+    if curInterval.end < newInterval.start then
+       result.add(curInterval);
+    else if curInterval.start > newInterval.end then
+       result.add(newInterval);
+       newInterval = curInterval;
+    else
+       newInterval = new Interval(min(curInterval.start, newInterval.start),max(curInterval.end, newInterval.end));
+end loop;
+result.add(newInterval);
+return result;
