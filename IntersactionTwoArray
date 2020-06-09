@@ -1,0 +1,30 @@
+public class IntersectionTwoArrays {
+
+    static void  printIntervals(int intervals1[][],int intervals2[][]){
+        int i=0,j=0;
+        int n=intervals1.length;
+        int m=intervals2.length;
+
+        while(i<n && j<m ){
+            int l=Math.max(intervals1[i][0],intervals2[j][0]);
+            int r=Math.min(intervals1[i][1],intervals2[j][1]);
+            System.out.println(l + " , "+r);
+            if(intervals1[i][1]<intervals2[j][1]){
+                i++;
+            }
+            else{
+                j++;
+            }
+        }
+    }
+    public static void main (String[] args)
+    {
+
+        int intervals1[][] = {{ 0, 4 }, { 5, 10 },
+                { 13, 20 }, { 24, 25 }};
+        int intervals2[][] = {{ 1, 5 }, { 8, 12 },
+                { 15, 24 }, { 25, 26 }};
+
+        printIntervals(intervals1,intervals2);
+    }
+}
