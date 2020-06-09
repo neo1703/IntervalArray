@@ -1,0 +1,14 @@
+def merge(intervals):
+result = empty Set; 
+sort(intervals, StartBasedComparator)
+prev = intervals[0];
+for i = 1 to n-1
+   cur = intervals[i];
+   if cur.start < prev.end then
+      prev = new Interval(start=prev.start, end = max(cur.end, prev.end));
+   else
+      result.add(prev);
+      prev = cur;
+    end
+end loop;
+return result;
