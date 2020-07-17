@@ -1,0 +1,68 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.*;
+
+public class Main
+{
+    public static void getNumber(String str){
+        int mcount=0;
+        Set<Integer> set=new HashSet<>();
+        int out=1;
+        int ncount=0;int len=str.length();
+        if(len>8){
+            System.out.println("Not valid Input");
+        }
+        for(int i=0;i<len;i++){
+            if(str.charAt(i)=='M')
+                mcount++;
+            else
+                ncount++;
+        }
+        ncount=9-ncount;
+        
+        if(str.charAt(0)=='M')
+        {    out*=(mcount+1); 
+            out=out*10+mcount;
+            set.add(mcount+1);
+            set.add(mcount);
+           
+        }
+        else{
+            out*=(ncount);
+            out=out*10+(ncount+1);
+            set.add(ncount);
+            set.add(ncount+1);
+            
+        }
+        for(int i=1;i<len;i++){
+            if(str.charAt(i)=='N'){
+                int n=out%10;
+                n++;
+                while(set.contains(n)){
+                    n++;
+                }
+                out=out*10+(n);
+                set.add(n);
+            }
+            else{
+                int n=out%10;
+                n--;
+                while(set.contains(n)){
+                    n--;
+                }
+                out=out*10+(n);
+                set.add(n);
+            }
+        }
+        System.out.println("Output : "+ out);
+    }
+	public static void main(String[] args) {
+		String str="MMMNN";    
+		getNumber(str);
+	}
+}
